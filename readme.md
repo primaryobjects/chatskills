@@ -3,6 +3,10 @@ Chatskills
 
 Create a chatbot using [Alexa-style](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/getting-started-guide) skills and intents.
 
+Chatskills is a quick and easy way to create a conversational user-interface for applications and services. By creating skills and intents, you can setup matching phrases and logic for responding to various requests.
+
+Chatskills can handle requests from multiple users, maintain session memory, access services, store/retrieve variables, and respond to incoming text.
+
 Example chat
 
 ```
@@ -127,33 +131,12 @@ This intent can be interacted with like this:
 Things are looking up today for Scorpio.
 ```
 
-## Respond
+Since skills include a session for storing variables, an intent can choose to continue (return true) or end a session (return false).
 
-Chatskills.respond can be used in 3 different ways to respond to input text. In this manner, you can programmatically select which skills to execute or allow all skills to have a chance at running.
+When a session is continued, all input from the user is directed to the skill.
+When a session is ended, input must be received in the format, "BOT, ask SKILL text".
 
-#### Run against all skills.
-
-```javascript
-chatskills.respond(text, function(response) {
-    console.log(response);
-});
-```
-
-#### Run against a specific skill.
-
-```javascript
-chatskills.respond(text, hello, function(response) {
-    console.log(response);
-});
-```
-
-#### Run against multiple specific skills.
-
-```javascript
-chatskills.respond(text, [ hello, goodbye ], function(response) {
-    console.log(response);
-});
-```
+To continue a session after executing an intent, return true. Otherwise, omitting a return statement or returning false will end the skill session.
 
 ## Schema and Utterances
 
