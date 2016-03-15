@@ -1,8 +1,47 @@
 {
   "name": "chatskills",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "description": "Build a simple chatbot using Alexa-style skills and intents.",
+  "author": {
+    "name": "Kory Becker",
+    "email": "kbecker@primaryobjects.com",
+    "url": "http://www.primaryobjects.com/kory-becker"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/primaryobjects/chatskills.git"
+  },
+  "main": "./lib",
   "dependencies": {
     "readline-sync": "*",
     "alexa-app": "*"
-  }
+  },
+  "engines": {
+    "node": ">= 0.8.x"
+  },
+  "licenses": [
+    {
+      "type": "Apache",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "keywords": [
+    "chatskills",
+    "chat skills",
+    "chatbot",
+    "chat bot",
+    "chat-bot",
+    "alexa",
+    "amazon",
+    "amazon echo",
+    "intents",
+    "skills",
+    "natural language processing",
+    "nlp",
+    "slack",
+    "utterance",
+    "bot"
+  ],
+  "_id": "chatskills@0.1.0",
+  "_from": "chatskills"
 }
