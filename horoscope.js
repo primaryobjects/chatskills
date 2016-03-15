@@ -1,7 +1,9 @@
 var chatskills = require('./lib/chatskills');
 
+// Create a new skill.
 var horoscope = chatskills.add('horoscope');
 
+// Create intents, using a dictionary.
 horoscope.dictionary = {"signs":['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces']};
 horoscope.intent('predict', {
     'slots': {'SIGN':'LITERAL'},

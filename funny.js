@@ -1,7 +1,9 @@
 var chatskills = require('./lib/chatskills');
 
+// Create a new skill.
 var funny = chatskills.add('funny');
 
+// Create intents.
 funny.intent('knockKnock', {
     'slots': {'STATE':'NUMBER'},
     'utterances': [ '{to |}{tell|say} {me |} {a |}joke',
