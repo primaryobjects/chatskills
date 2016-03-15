@@ -3,28 +3,38 @@ Chatskills
 
 Create a chatbot using [Alexa-style](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/getting-started-guide) skills and intents.
 
-Chatskills is a quick and easy way to create a conversational user-interface for applications and services. By creating skills and intents, you can setup matching phrases and logic for responding to various requests.
-
-Chatskills can handle requests from multiple users, maintain session memory, access services, store/retrieve variables, and respond to incoming text.
-
-Example chat
-
-```
-> hello
-Hi!
-> ask names My name is Kory.
-Nice to meet you, Kory.
-> ask names My last name is Smith.
-Gotcha.
-> ask names Whats my name?
-Your name is Kory Smith.
-```
-
 ```bash
 $ npm install chatskills
 ```
 
+Chatskills is a quick and easy way to create a conversational user-interface for applications and services. By creating skills and intents, you can setup matching phrases and logic for responding to user requests.
+
+Chatskills handles requests from multiple users and maintains session memory. When a user starts a conversation with one of the skills, the skill continues to execute within a session context, until the skill terminates.
+
+## Example
+
+```
+> chatskills, ask hello to say hi.
+Hello, World!
+> chatskills, ask horoscope for Scorpio.
+Things are looking up today for Scorpio.
+> chatskills, ask funny to tell me a joke
+Knock knock.
+> who's there?
+Banana.
+> banana who
+Knock knock.
+> whos there
+Orange.
+> orange who?
+Orange you glad I didn't say banana?
+```
+
+In this example, the user accesses three different skills, [hello](), [funny](), and [horoscope]().
+
 ## Usage
+
+Using chatskills is easy. Add a new skill, then create some intents. Here's a simple example.
 
 ```javascript
 var chatskills = require('./lib/chatskills');
@@ -33,19 +43,49 @@ var chatskills = require('./lib/chatskills');
 var hello = chatskills.add('hello');
 
 // Create an intent.
-hello.intent('sayHello', {
+hello.intent('helloWorld', {
     'slots': {},
-    'utterances': [ '{hi|hello|howdy|hi there|hiya|hi ya|hey|hay}' ]
+    'utterances': [ '{to |}{say|speak|tell me} {hi|hello|howdy|hi there|hiya|hi ya|hey|hay|heya}' ]
     },
     function(req, res) {
-        res.say('Hi!');
+        res.say('Hello, World!');
     }
 );
 
 // Respond to input.
-chatskills.respond('howdy', function(response) {
+chatskills.respond('chatskills, ask hello to say hi', function(response) {
     console.log(response);
 });
+```
+
+In the above example, the utterances grammar automatically expands to match on the following phrases:
+
+```
+helloWorld      to say hi
+helloWorld      say hi
+helloWorld      to speak hi
+helloWorld      speak hi
+helloWorld      to tell me hi
+helloWorld      tell me hi
+helloWorld      to say hello
+helloWorld      say hello
+helloWorld      to speak hello
+helloWorld      speak hello
+helloWorld      to tell me hello
+helloWorld      tell me hello
+helloWorld      to say howdy
+...
+```
+
+To interact with the chatbot using this skill, say any of the target phrases. In the above example, we've used the phrase "to say hi", but you can match against any of the generated phrases. For example:
+
+```
+> chatskills, ask hello to tell me hi
+Hello, World!
+> chatskills, ask hello to say hello
+Hello, World!
+> chatskills, ask hello to say howdy
+Hello, World!
 ```
 
 ## Reading from the Console
@@ -82,8 +122,8 @@ bot.on('message', function(message) {
         var author = getUserById(message.user);
         var channel = getChannelById(message.channel);
 
-        // Respond to input.
-        chatskills.respond(message.text, function(response) {
+        // Respond to input, use author.name as the session id.
+        chatskills.respond(message.text, author.name, function(response) {
             if (channel) {
                 // Public channel message.
                 bot.postMessageToChannel(channel.name, response);

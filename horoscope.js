@@ -13,7 +13,7 @@ horoscope.intent('predict', {
     function(req, res) {
     	var sign = req.get('SIGN');
     	if (horoscope.dictionary['signs'].indexOf(sign.toLowerCase()) != -1) {
-        	res.say('Things are looking up today for ' + req.get('SIGN'));
+        	res.say('Things are looking up today for ' + req.get('SIGN') + '.');
     	}
     	else {
     		res.say("I'm not familiar with that zodiac sign.");

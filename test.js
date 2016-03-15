@@ -21,7 +21,7 @@ require('./horoscope');
 // Example client.
 var text = ' ';
 while (text.length > 0 && text != 'quit') {
-    text = readlineSync.question(':> ');
+    text = readlineSync.question('> ');
 
     // Respond to what was typed.
     chatskills.respond(text, function(response) {
