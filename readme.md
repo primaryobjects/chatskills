@@ -111,8 +111,6 @@ while (text.length > 0 && text != 'quit') {
 
 You don't have to use just the console! You can run your chatbot anywhere, like Slack. See [here](https://gist.github.com/primaryobjects/e1a182c7ef2f8d33731e) for full example.
 
-![Chatskills running on Slack](https://raw.githubusercontent.com/primaryobjects/chatskills/master/images/chatskills-slack.png)
-
 ```javascript
 var SlackBot = require('slackbots');
 var bot = new SlackBot({ token: token, name: 'awesome' });
@@ -138,6 +136,8 @@ bot.on('message', function(message) {
     }
 });
 ```
+
+![Chatskills running on Slack](https://raw.githubusercontent.com/primaryobjects/chatskills/master/images/chatskills-slack.png)
 
 ## Creating a Skill
 
