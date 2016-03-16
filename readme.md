@@ -183,6 +183,8 @@ While a session is open for a user, all input from the user is directed to the a
 
 An intent can keep a session open by returning true and end a session by returning false. An intent may also omit a return statement, which is the same as returning false.
 
+For an example using session, see the [horoscope](https://github.com/primaryobjects/chatskills/blob/master/horoscope.js#L31) skill. Notice, the intent asks the user a question and then returns true to keep the session going. The intent only returns false once a valid response is given, thus, ending the session.
+
 In summary, when a user session is open, all input from the user is directed to the skill. When a user session is ended, input from the user must be received in the format, "chatskills, ask [SKILL] text", to execute a new skill.
 
 ## Changing the Chatbot Name
