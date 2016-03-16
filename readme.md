@@ -37,7 +37,7 @@ In this example, the user accesses three different skills: [hello](https://githu
 Using chatskills is easy. Add a new skill, then create some intents. Here's a simple example.
 
 ```javascript
-var chatskills = require('./lib/chatskills');
+var chatskills = require('chatskills');
 
 // Create a skill.
 var hello = chatskills.add('hello');
