@@ -151,7 +151,7 @@ var horoscope = chatskills.add('horoscope');
 
 ## Create an Intent
 
-Skills are made up of intents. This is where input from the user is matched against an array of utterances. When a match is found, that intent is executed. The intent usually results in a response, although it can also result in storing data in a variable.
+Skills are made up of intents. This is where input from the user is matched against an array of utterances. When a match is found, that intent is executed. An intent can output a response by calling ```res.say('hello')```.
 
 Here's an example of creating a new intent, named "predict".
 
