@@ -156,7 +156,7 @@ Here's an example of creating a new intent, named "predict".
 ```javascript
 horoscope.intent('predict', {
     'slots': {'SIGN':'LITERAL'},
-    'utterances': [ 'to predict {sign|SIGN}' ]
+    'utterances': [ 'for {signs|SIGN}' ]
     },
     function(req, res) {
         res.say('Things are looking up today for ' + req.get('SIGN') + '.');
@@ -167,14 +167,14 @@ horoscope.intent('predict', {
 This intent can be interacted with like this:
 
 ```
-> ask horoscope to predict Scorpio
+> chatskills, ask horoscope for Scorpio
 Things are looking up today for Scorpio.
 ```
 
 Since skills include a session for storing variables, an intent can choose to continue (return true) or end a session (return false).
 
 When a session is continued, all input from the user is directed to the skill.
-When a session is ended, input must be received in the format, "BOT, ask SKILL text".
+When a session is ended, input must be received in the format, "BOT, ask SKILL text", to execute a new skill.
 
 To continue a session after executing an intent, return true. Otherwise, omitting a return statement or returning false will end the skill session.
 

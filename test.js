@@ -18,6 +18,8 @@ hello.intent('helloWorld', {
 require('./funny');
 require('./horoscope');
 
+console.log('Welcome, here are some available commands to try:\nchatskills, ask hello to say hi\nchatskills, ask horoscope for Aries\nchatskills, ask funny to tell a joke\n');
+
 // Example client.
 var text = ' ';
 while (text.length > 0 && text != 'quit') {
