@@ -30,7 +30,7 @@ Orange.
 Orange you glad I didn't say banana?
 ```
 
-In this example, the user accesses three different skills, [hello](), [funny](), and [horoscope]().
+In this example, the user accesses three different skills, [hello](https://github.com/primaryobjects/chatskills/blob/master/test.js), [funny](https://github.com/primaryobjects/chatskills/blob/master/funny.js), and [horoscope](https://github.com/primaryobjects/chatskills/blob/master/horoscope.js).
 
 ## Usage
 

@@ -8,17 +8,17 @@ horoscope.dictionary = {"signs":['aries','taurus','gemini','cancer','leo','virgo
 horoscope.intent('predict', {
     'slots': {'SIGN':'LITERAL'},
     'utterances': [ 'for {signs|SIGN}',
-    				'{signs|SIGN}' ]
+                    '{signs|SIGN}' ]
     },
     function(req, res) {
-    	var sign = req.get('SIGN');
-    	if (horoscope.dictionary['signs'].indexOf(sign.toLowerCase()) != -1) {
-        	res.say('Things are looking up today for ' + req.get('SIGN') + '.');
-    	}
-    	else {
-    		res.say("I'm not familiar with that zodiac sign.");
-    		return true;
-    	}
+        var sign = req.get('SIGN');
+        if (horoscope.dictionary['signs'].indexOf(sign.toLowerCase()) != -1) {
+            res.say('Things are looking up today for ' + req.get('SIGN') + '.');
+        }
+        else {
+            res.say("I'm not familiar with that zodiac sign.");
+            return true;
+        }
     }
 );
 
