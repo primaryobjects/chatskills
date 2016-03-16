@@ -9,7 +9,7 @@ $ npm install chatskills
 
 Chatskills is a quick and easy way to create a conversational user-interface for applications and services. It uses a collection of skills and intents, styled after the [Alexa Skills Kit](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/getting-started-guide), to setup matching phrases and logic for responding to user requests.
 
-Chatskills does not require a server. It can run directly in the console or on the web. It also handles requests from multiple users and maintains session memory. When a user starts a conversation with one of the skills, the skill continues to execute within a session context, until the skill terminates.
+Chatskills does not require a server and can run directly in the console. It can also run on the web. It handles requests from multiple users and maintains session memory. When a user starts a conversation with one of the skills, the skill continues to execute within a session context, until the skill terminates.
 
 ## Example
 
