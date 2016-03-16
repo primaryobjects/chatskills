@@ -139,7 +139,7 @@ bot.on('message', function(message) {
 
 ## Creating a Skill
 
-Skills are programs that your chatbot can run. They consist of intents, which are composed of utterances (phrases to match from the user input), responses, and session memory. Each skill holds its own memory space, so you can store and retrieve variables, to help with responding intelligently to the user.
+Skills are programs that your chatbot can run. They consist of intents, which are composed of utterances (phrases to match from the user input), responses, and session memory. Each skill can access session memory, so you can store and retrieve variables to help with responding intelligently to the user.
 
 Here's an example of creating a new skill, named "horoscope".
 
@@ -171,12 +171,29 @@ This intent can be interacted with like this:
 Things are looking up today for Scorpio.
 ```
 
-Since skills include a session for storing variables, an intent can choose to continue (return true) or end a session (return false).
+## Starting and Ending a Session
 
-When a session is continued, all input from the user is directed to the skill.
-When a session is ended, input must be received in the format, "BOT, ask SKILL text", to execute a new skill.
+When a user provides input, the input is matched against each skill's list of intents. When a match is found, a new session starts, and the skill's intent begins executing.
 
-To continue a session after executing an intent, return true. Otherwise, omitting a return statement or returning false will end the skill session.
+When a session has started for a user, the activated skill's intents can get/set variable values within the session. This allows you to not only store and retrieve data, but also to maintain state variables.
+
+While a session is open for a user, all input from the user is directed to the activated skill. In this manner, the user does not need to re-request a skill ("chatskills, ask hello to say hi"). Instead, the user can simply provide text, which will be matched against the currently executing skill's intents.
+
+An intent can keep a session open by returning true and end a session by returning false. An intent may also omit a return statement, which is the same as returning false.
+
+Overall, while a session is open, all input from the user is directed to the skill. When a session is ended, input must be received in the format, "chatskills, ask [SKILL] text", to execute a new skill.
+
+## Changing the Chatbot Name
+
+The default chatbot name is "chatskills". All requests to execute a skill must begin with the chatbot name. For example, "chatskills, ask hello to say hi". To customize the chatbot name, use the following:
+
+```javascript
+chatskills.name('AwesomeBot');
+```
+
+## Verbose Output
+
+To display warnings and errors, set ```chatskills.verbose = true```.
 
 ## Schema and Utterances
 
