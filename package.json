@@ -1,6 +1,6 @@
 {
   "name": "chatskills",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Build a simple chatbot using Alexa-style skills and intents.",
   "author": {
     "name": "Kory Becker",
@@ -17,12 +17,12 @@
     "alexa-app": "*"
   },
   "engines": {
-    "node": ">= 0.8.x"
+    "node": "*"
   },
   "licenses": [
     {
-      "type": "Apache",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
     }
   ],
   "keywords": [
@@ -42,6 +42,6 @@
     "utterance",
     "bot"
   ],
-  "_id": "chatskills@0.1.0",
+  "_id": "chatskills@0.0.1",
   "_from": "chatskills"
 }
