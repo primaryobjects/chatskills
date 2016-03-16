@@ -269,3 +269,14 @@ app.dictionary = {"colors":["red","green","blue"]};
 "my favorite color is {colors|FAVEORITE_COLOR}"
 "I like {colors|COLOR}"
 ```
+
+License
+----
+
+MIT
+
+Author
+----
+
+Kory Becker
+http://www.primaryobjects.com/kory-becker
