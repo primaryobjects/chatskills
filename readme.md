@@ -149,11 +149,11 @@ Here's an example of creating a new skill, named "horoscope".
 var horoscope = chatskills.add('horoscope');
 ```
 
-## Create an Intent
+## Creating an Intent
 
 Skills are made up of intents. This is where input from the user is matched against an array of utterances. When a match is found, that intent is executed. An intent can output a response by calling ```res.say('hello')```.
 
-Here's an example of creating a new intent, named "predict".
+Here's an example of creating a new intent for the skill "horoscope".
 
 ```javascript
 horoscope.intent('predict', {
@@ -175,22 +175,22 @@ Things are looking up today for Scorpio.
 
 ## Starting and Ending a Session
 
-When a user provides input, the input is matched against each skill's list of intents. When a match is found, a new session starts, and the skill's intent begins executing.
+When a user provides input, the input is matched against each skill and their list of intents. When a match is found, a new session starts, and the skill begins executing.
 
-When a session has started for a user, the activated skill's intents can get/set variable values within the session. This allows you to not only store and retrieve data, but also to maintain state variables.
+When a session has started for a user, the activated skill's intent can get/set variable values within the session. This allows you to store and retrieve data.
 
 While a session is open for a user, all input from the user is directed to the activated skill. In this manner, the user does not need to re-request a skill ("chatskills, ask hello to say hi"). Instead, the user can simply provide text, which will be matched against the currently executing skill's intents.
 
 An intent can keep a session open by returning true and end a session by returning false. An intent may also omit a return statement, which is the same as returning false.
 
-Overall, while a session is open, all input from the user is directed to the skill. When a session is ended, input must be received in the format, "chatskills, ask [SKILL] text", to execute a new skill.
+In summary, when a user session is open, all input from the user is directed to the skill. When a user session is ended, input from the user must be received in the format, "chatskills, ask [SKILL] text", to execute a new skill.
 
 ## Changing the Chatbot Name
 
 The default chatbot name is "chatskills". All requests to execute a skill must begin with the chatbot name. For example, "chatskills, ask hello to say hi". To customize the chatbot name, use the following:
 
 ```javascript
-chatskills.name('AwesomeBot');
+chatskills.name('awesome');
 ```
 
 ## Verbose Output
