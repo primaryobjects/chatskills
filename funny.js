@@ -27,13 +27,13 @@ funny.intent('banana', {
     function(req, res) {
         var state = req.get('state');
         if (state < 2) {
+            req.set('state', state + 1);
             res.say('Banana.');
         }
         else if (state == 3) {
+            req.set('state', state + 1);
             res.say('Orange.');
         }
-
-        req.set('state', state + 1);
 
         return true;
     }
