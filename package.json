@@ -1,6 +1,6 @@
 {
   "name": "chatskills",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Build a simple chatbot using Alexa-style skills and intents.",
   "author": {
     "name": "Kory Becker",
@@ -47,6 +47,6 @@
     "AI",
     "artificial intelligence"
   ],
-  "_id": "chatskills@0.0.2",
+  "_id": "chatskills@0.0.3",
   "_from": "chatskills"
 }
