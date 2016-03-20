@@ -151,7 +151,7 @@ var horoscope = chatskills.add('horoscope');
 
 ## Creating an Intent
 
-Skills are made up of intents. This is where input from the user is matched against an array of utterances. When a match is found, that intent is executed. An intent can output a response by calling ```res.say('hello')```.
+Skills are made up of intents. This is where input from the user is matched against an array of utterances. When a match is found, that intent is executed. An intent can get/set variables in the user session by calling ```req.get('variable')``` and ```req.set('variable', value)```. An intent can output a response by calling ```res.say('hello')```.
 
 Here's an example of creating a new intent for the skill "horoscope".
 
@@ -186,6 +186,10 @@ An intent can keep a session open by returning true and end a session by returni
 For an example using session, see the [horoscope](https://github.com/primaryobjects/chatskills/blob/master/horoscope.js#L31) skill. Notice, the intent asks the user a question and then returns true to keep the session going. The intent only returns false once a valid response is given, thus, ending the session.
 
 In summary, when a user session is open, all input from the user is directed to the skill. When a user session is ended, input from the user must be received in the format, "chatskills, ask [SKILL] text", to execute a new skill.
+
+## Session Timeout
+
+The default session timeout is 1 hour of no input from the user. To change the session timeout, set ```chatskills.timeout = 3600```, where the value is specified in seconds. To disable session timeout, set the value to 0.
 
 ## Changing the Chatbot Name
 
