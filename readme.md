@@ -107,6 +107,8 @@ while (text.length > 0 && text != 'quit') {
 }
 ```
 
+If you're using async calls in your skills (such as request, etc) then you'll want to use an async loop, instead of the while loop above. Here's an [example](https://github.com/primaryobjects/chatskills/blob/master/chatbot.js#L39).
+
 ## Reading from Slack
 
 You don't have to use just the console! You can run your chatbot anywhere, like Slack. See [here](https://gist.github.com/primaryobjects/e1a182c7ef2f8d33731e) for full example.
