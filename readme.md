@@ -1,15 +1,17 @@
 Chatskills
 ----------
 
-Create a chatbot using [Alexa-style](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit) skills and intents.
+Run [Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/getting-started-guide) apps on the command-line. Run them in Slack. Run them anywhere! Supports Amazon Alexa skills and intents.
 
 ```bash
 $ npm install chatskills
 ```
 
-Chatskills is a quick and easy way to create a conversational user-interface for applications and services. It uses a collection of skills and intents, styled after the [Alexa Skills Kit](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/getting-started-guide), to setup matching phrases and logic for responding to user requests.
+Chatskills is a quick and easy way to run Alexa apps outside of Amazon. Easily create your skills and intents and run them right on the command-line!
 
-Chatskills does not require a server and can run directly in the console. It can also run on the web. It handles requests from multiple users and maintains session memory. When a user starts a conversation with one of the skills, the skill continues to execute within a session context, until the skill terminates.
+Chatskills does not require a server and can run directly in the console. It can also run on the web, or Slack, or anywhere. It handles requests from multiple users and maintains session memory. When a user starts a conversation with one of the skills, the skill continues to execute within a session context, until the skill terminates.
+
+Here's what an Amazon Alexa app looks like, running on the command-line.
 
 ## Example
 
@@ -34,13 +36,13 @@ In this example, the user accesses three different skills: [hello](https://githu
 
 ## Usage
 
-Using chatskills is easy. Add a new skill, then create some intents. Here's a simple example.
+Using chatskills is easy. Use the Alexa syntax to add a new skill, then create some intents. Here's a simple example.
 
 ```javascript
 var chatskills = require('chatskills');
 
 // Create a skill.
-var hello = chatskills.add('hello');
+var hello = chatskills.app('hello');
 
 // Create an intent.
 hello.intent('helloWorld', {
@@ -148,7 +150,7 @@ Skills are programs that your chatbot can run. They consist of intents, which ar
 Here's an example of creating a new skill, named "horoscope".
 
 ```javascript
-var horoscope = chatskills.add('horoscope');
+var horoscope = chatskills.app('horoscope');
 ```
 
 ## Creating an Intent
@@ -175,6 +177,75 @@ This intent can be interacted with like this:
 Things are looking up today for Scorpio.
 ```
 
+## Launching a Skill
+
+There are two ways to begin running a skill.
+
+#### Using an Intent to "Run"
+
+The first way to launch a skill is to create an intent such as, "run". This would let you enter: "chatskills, ask [skillname] to run.". Provided the intent has a return value of true (to keep the session alive), your skill will now be running.
+
+An example of a "run" skill can be found in [guessinggame](https://github.com/primaryobjects/chatskills/blob/master/guessinggame.js).
+
+```javascript
+app.intent('run', {
+        "slots": {},
+        "utterances": ["{to|} {run|start|go|launch}"]
+    }, function(req, res) {
+        var prompt = "Guess a number between 1 and 100!";
+        res.say(prompt).reprompt(prompt).shouldEndSession(false);
+    }
+);
+```
+
+#### Using the Launch Method
+
+The second way to launch a skill is to create a launch method to automatically run upon starting your app. Then simply call `chatskills.launch(app)` to start your skill. You can pass the skill or the name of the skill. You can also provide an optional unique sessionId.
+
+Example: `chatskills.launch(app)` or `chatskills.launch('horoscope')` or `chatskills.launch('horoscope', 'some-unique-id')`.
+
+Here's a complete [example](https://github.com/primaryobjects/chatskills/blob/master/hello.js).
+
+```javascript
+var chatskills = require('./lib/chatskills');
+var readlineSync = require('readline-sync');
+
+// Create a skill.
+var hello = chatskills.app('hello');
+
+// Launch method to run at startup.
+hello.launch(function(req,res) {
+    res.say("Ask me to say hi!");
+
+    // Keep session open.
+    res.shouldEndSession(false);
+});
+
+// Create an intent.
+hello.intent('helloWorld', {
+    'slots': {},
+    'utterances': [ '{to |}{say|speak|tell me} {hi|hello|howdy|hi there|hiya|hi ya|hey|hay|heya}' ]
+    },
+    function(req, res) {
+        res.say('Hello, World!');
+    }
+);
+
+// Start running our skill.
+chatskills.launch(hello);
+
+// Console client.
+var text = ' ';
+while (text.length > 0 && text != 'quit') {
+    text = readlineSync.question('> ');
+
+    // Respond to input.
+    chatskills.respond(text, function(response) {
+        console.log(response);
+    });
+}
+```
+
 ## Starting and Ending a Session
 
 When a user provides input, the input is matched against each skill and their list of intents. When a match is found, a new session starts, and the skill begins executing.
@@ -183,7 +254,7 @@ When a session has started for a user, the activated skill's intent can get/set 
 
 While a session is open for a user, all input from the user is directed to the activated skill. In this manner, the user does not need to re-request a skill ("chatskills, ask hello to say hi"). Instead, the user can simply provide text, which will be matched against the currently executing skill's intents.
 
-An intent can keep a session open by returning true and end a session by returning false. An intent may also omit a return statement, which is the same as returning false.
+An intent can keep a session open by returning `true` or by calling `res.shouldEndSession(false)` and end a session by returning `false` or by calling `res.shouldEndSession(true)`. An intent may also omit a return statement, which is the same as returning false.
 
 For an example using session, see the [horoscope](https://github.com/primaryobjects/chatskills/blob/master/horoscope.js#L31) skill. Notice, the intent asks the user a question and then returns true to keep the session going. The intent only returns false once a valid response is given, thus, ending the session.
 

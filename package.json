@@ -1,7 +1,7 @@
 {
   "name": "chatskills",
-  "version": "0.0.10",
-  "description": "Build a simple chatbot using Alexa-style skills and intents.",
+  "version": "0.0.11",
+  "description": "Run Alexa apps on the command-line. Run them in Slack. Run them anywhere! Supports Amazon Alexa skills and intents.",
   "author": {
     "name": "Kory Becker",
     "email": "kbecker@primaryobjects.com",
@@ -47,6 +47,6 @@
     "AI",
     "artificial intelligence"
   ],
-  "_id": "chatskills@0.0.10",
+  "_id": "chatskills@0.0.11",
   "_from": "chatskills"
 }
