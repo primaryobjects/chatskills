@@ -294,11 +294,44 @@ app.intent('sampleIntent',
 );
 ```
 
-#### slots
+#### Slots
 
 The slots object is a simple Name:Type mapping. The type must be one of Amazon's supported slot types: LITERAL, NUMBER, DATE, TIME, DURATION
 
-#### utterances
+#### Custom Slot Types
+
+As a replacement for the `LITERAL` slot type, which is no longer being supported by Amazon, it is recommended to use custom slot types in its place. Here is an example of defining a custom slot type for `DragonType`.
+
+```javascript
+app.intent('attack', 
+    {
+        'slots': { 'DragonType': 'DRAGONTYPE' },
+        'utterances': ['{attack|fight|hit|use} {sword|dagger|wand} on {-|DragonType} dragon']
+    }, function(request,response) {
+        response.say('You are attacking the ' + request.slot('DragonType') + ' dragon!');
+    }
+);
+```
+
+You can include custom slot types within utterances by using the syntax `{-|CustomTypeName}`. This indicates that the term should come from a list of values for the custom slot type. In the example above, the utterance uses the term `{-|DragonType}`, indicating a term should come from the list of values (shown below). For chatskills, a list of values does not need to be provided - any word will be accepted for a custom slot type and used as its value.
+
+If publishing to the Amazon Alexa service, you would provide the custom slot types for `DragonType` by specifying the type name and a list of values. For example:
+
+Type:
+`DRAGONTYPE`
+
+Values:
+```
+golden
+fire
+ice
+water
+snow
+```
+
+Note, chatskills and Amazon Alexa will actually accept any word for the custom slot value. It doesn't have to match a word from the list of values. In this manner, custom slot types are similar to `LITERAL`.
+
+#### Utterances
 
 The utterances syntax allows you to generate many (hundreds or even thousands) of sample utterances using just a few samples that get auto-expanded. Any number of sample utterances may be passed in the utterances array. Below are some sample utterances macros and what they will be expanded to.
 

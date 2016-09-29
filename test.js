@@ -17,8 +17,9 @@ hello.intent('helloWorld', {
 // Include some other skills.
 require('./funny');
 require('./horoscope');
+require('./favoritecolor');
 
-console.log('Welcome, here are some available commands to try:\nchatskills, ask hello to say hi\nchatskills, ask horoscope for Aries\nchatskills, ask funny to tell a joke\n');
+console.log('Welcome, here are some available commands to try:\nchatskills, ask hello to say hi\nchatskills, ask horoscope for Aries\nchatskills, ask funny to tell a joke\nchatskills, ask favoritecolor to run\n');
 
 // Example client.
 var text = ' ';
