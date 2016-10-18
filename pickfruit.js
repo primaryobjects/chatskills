@@ -1,3 +1,6 @@
+//
+// Example of using a dictionary to allow the user to choose from a pre-selected list of values in a custom slot type.
+//
 var chatskills = require('./lib/chatskills');
 
 // Create a new skill.
@@ -14,8 +17,8 @@ pickFruit.intent('run', {
     }
 );
 
-// Using the Custom Slot Type "ColorType".
-pickFruit.intent('color',{
+// Using the Custom Slot Type "FruitType", with values from a dictionary.
+pickFruit.intent('fruit',{
         "slots":{"FruitType":"FRUITTYPE"}
         ,"utterances":["I choose {fruits|FruitType}",
                        "{fruits|FruitType}"]
