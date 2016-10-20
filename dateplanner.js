@@ -19,16 +19,31 @@ dateplanner.intent('run', {
 
 // Example using the built-in slot type: AMAZON.DATE.
 dateplanner.intent('getDate',{
-        "slots":{"Booking":"AMAZON.DATE"}
-        ,"utterances":["{-|Booking}",
-                       "book {-|Booking}",
-                       "I choose {-|Booking}"]
+        "slots":{"Date":"AMAZON.DATE"}
+        ,"utterances":["{-|Date}",
+                       "book {-|Date}",
+                       "I choose {-|Date}"]
     },
     function(req,res) {
       // Store the date.
-      res.session('Date', req.slot('Booking'));
+      res.session('Date', req.slot('Date'));
 
-      res.say("Ok, I've booked the date " + req.slot('Booking') + ' for your event. How many guests will be attending?');
+      res.say('What time will the event start?');
+      res.shouldEndSession(false);
+    }
+);
+
+// Example using the built-in slot type: AMAZON.TIME.
+dateplanner.intent('getTime',{
+        "slots":{"Time":"AMAZON.TIME"}
+        ,"utterances":["{-|Time}",
+                       "at {-|Time}"]
+    },
+    function(req,res) {
+      // Store the time.
+      res.session('Time', req.slot('Time'));
+
+      res.say('How many guests will be attending?');
       res.shouldEndSession(false);
     }
 );
@@ -46,7 +61,7 @@ dateplanner.intent('getNumber',{
       // Store the guest count.
       res.session('GuestCount', req.slot('GuestCount'));
 
-      res.say("Your event will be on " + req.slot('Date') + " and you are inviting " + req.session('GuestCount') + " guests. Is this correct?");
+      res.say("Your event will be on " + req.session('Date') + " at " + req.session('Time') + " and you are inviting " + req.slot('GuestCount') + " guests. Is this correct?");
       res.shouldEndSession(false);
     }
 );
