@@ -61,7 +61,14 @@ dateplanner.intent('getNumber',{
       // Store the guest count.
       res.session('GuestCount', req.slot('GuestCount'));
 
-      res.say("Your event will be on " + req.session('Date') + " at " + req.session('Time') + " and you are inviting " + req.slot('GuestCount') + " guests. Is this correct?");
+      if (req.session('Date') && req.session('Time')) {
+        res.say("Your event will be on " + req.session('Date') + " at " + req.session('Time') + " and you are inviting " + req.slot('GuestCount') + " guests. Is this correct?");
+      }
+      else {
+        // User has not provided all info yet.
+        res.say("You are inviting " + req.slot('GuestCount') + " guests. What date would you like to book?").shouldEndSession(false);
+      }
+
       res.shouldEndSession(false);
     }
 );
