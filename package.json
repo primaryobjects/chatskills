@@ -1,6 +1,6 @@
 {
   "name": "chatskills",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Run Alexa apps on the command-line. Run them in Slack. Run them anywhere! Supports Amazon Alexa skills and intents.",
   "author": {
     "name": "Kory Becker",
@@ -26,27 +26,31 @@
     }
   ],
   "keywords": [
-    "chatskills",
-    "chat skills",
-    "chatbot",
-    "chat bot",
-    "chat-bot",
     "alexa",
     "amazon",
     "amazon echo",
     "intents",
     "skills",
+    "chatskills",
+    "chat skills",
+    "chatbot",
+    "chat bot",
+    "chat-bot",
     "natural language processing",
     "nlp",
     "slack",
     "slack chatbot",
     "slack bot",
+	"alexa-app",
     "utterance",
     "bot",
     "chat",
     "AI",
-    "artificial intelligence"
+    "artificial intelligence",
+    "conversational",
+    "conversation",
+    "conversational ui"
   ],
-  "_id": "chatskills@0.0.14",
+  "_id": "chatskills@0.0.15",
   "_from": "chatskills"
 }
