@@ -19,8 +19,9 @@ require('./funny');
 require('./horoscope');
 require('./favoritecolor');
 require('./pickfruit');
+require('./dateplanner');
 
-console.log('Welcome, here are some available commands to try:\nchatskills, ask hello to say hi\nchatskills, ask horoscope for Aries\nchatskills, ask funny to tell a joke\nchatskills, ask favoritecolor to run\nchatskills, ask pickfruit to run\n');
+console.log('Welcome, here are some available commands to try:\nchatskills, ask hello to say hi\nchatskills, ask horoscope for Aries\nchatskills, ask funny to tell a joke\nchatskills, ask favoritecolor to run\nchatskills, ask pickfruit to run\nchatskills, ask dateplanner to run\n');
 
 // Example client.
 var text = ' ';
