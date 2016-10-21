@@ -66,7 +66,7 @@ dateplanner.intent('getNumber',{
       }
       else {
         // User has not provided all info yet.
-        res.say("You are inviting " + req.slot('GuestCount') + " guests. What date would you like to book?").shouldEndSession(false);
+        res.say("You are inviting " + req.slot('GuestCount') + " guests. What date would you like to book?");
       }
 
       res.shouldEndSession(false);
