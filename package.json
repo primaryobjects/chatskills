@@ -1,6 +1,6 @@
 {
   "name": "chatskills",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Run Alexa apps on the command-line. Run them in Slack. Run them anywhere! Supports Amazon Alexa skills and intents.",
   "author": {
     "name": "Kory Becker",
@@ -51,6 +51,6 @@
     "conversation",
     "conversational ui"
   ],
-  "_id": "chatskills@0.0.16",
+  "_id": "chatskills@0.0.17",
   "_from": "chatskills"
 }
