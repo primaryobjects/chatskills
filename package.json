@@ -12,9 +12,15 @@
     "url": "git://github.com/primaryobjects/chatskills.git"
   },
   "main": "./lib",
+  "scripts": {
+    "test": "node test/*.test.js"
+  },
   "dependencies": {
     "readline-sync": "*",
     "alexa-app": "*"
+  },
+  "devDependencies": {
+    "tape": "^4.6.3"
   },
   "engines": {
     "node": "*"
