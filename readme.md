@@ -401,7 +401,7 @@ app.dictionary = {"colors":["red","green","blue"]};
 "I like {colors|COLOR}"
 ```
 
-#### Displaying Home Cards
+## Displaying Home Cards
 
 You can display Amazon Alexa Home [Cards](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/providing-home-cards-for-the-amazon-alexa-app#Creating%20a%20Home%20Card%20to%20Display%20Text%20and%20an%20Image) by handling the card [object](https://www.npmjs.com/package/alexa-app#card-examples) returned in the response method. When using alexa-app, the home card will be displayed in the Amazon Alexa App on your mobile device. When using chatskills, the home card can be handled in the `chatskills.respond()` callback method, which returns two arguments: `response` and `card`.
 
